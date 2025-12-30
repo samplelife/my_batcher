@@ -1,0 +1,316 @@
+/**
+ * 全局样式
+ * 
+ * 这里定义了 Mini Batcher 面板的基础样式。
+ * 使用 CSS 变量便于主题定制。
+ */
+
+/* CSS 变量 - 颜色主题 */
+:root {
+  --mb-primary: #4f46e5;
+  --mb-primary-hover: #4338ca;
+  --mb-success: #10b981;
+  --mb-warning: #f59e0b;
+  --mb-error: #ef4444;
+  --mb-bg: #1e1e2e;
+  --mb-bg-secondary: #2a2a3e;
+  --mb-text: #e2e8f0;
+  --mb-text-secondary: #94a3b8;
+  --mb-border: #3f3f5a;
+  --mb-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 根容器样式 */
+#mini-batcher-root {
+  /* 不设置任何样式，让子元素自己控制 */
+}
+
+/* 浮动按钮 - 用于打开面板 */
+.mb-float-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--mb-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--mb-shadow);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.mb-float-button:hover {
+  background: var(--mb-primary-hover);
+  transform: scale(1.1);
+}
+
+/* 面板容器 - 模态框样式 */
+.mb-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.mb-panel {
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  background: var(--mb-bg);
+  border-radius: 16px;
+  box-shadow: var(--mb-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--mb-border);
+}
+
+/* 面板头部 */
+.mb-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--mb-bg-secondary);
+  border-bottom: 1px solid var(--mb-border);
+}
+
+.mb-panel-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mb-text);
+}
+
+.mb-close-button {
+  background: none;
+  border: none;
+  color: var(--mb-text-secondary);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.mb-close-button:hover {
+  background: var(--mb-border);
+  color: var(--mb-text);
+}
+
+/* 面板内容区 */
+.mb-panel-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  color: var(--mb-text);
+}
+
+/* 通用按钮样式 */
+.mb-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mb-button-primary {
+  background: var(--mb-primary);
+  color: white;
+}
+
+.mb-button-primary:hover {
+  background: var(--mb-primary-hover);
+}
+
+.mb-button-secondary {
+  background: var(--mb-bg-secondary);
+  color: var(--mb-text);
+  border: 1px solid var(--mb-border);
+}
+
+.mb-button-secondary:hover {
+  background: var(--mb-border);
+}
+
+.mb-button-danger {
+  background: var(--mb-error);
+  color: white;
+}
+
+.mb-button-danger:hover {
+  background: #dc2626;
+}
+
+/* 输入框样式 */
+.mb-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--mb-bg-secondary);
+  border: 1px solid var(--mb-border);
+  border-radius: 8px;
+  color: var(--mb-text);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.mb-input:focus {
+  outline: none;
+  border-color: var(--mb-primary);
+}
+
+.mb-input::placeholder {
+  color: var(--mb-text-secondary);
+}
+
+/* 表单组 */
+.mb-form-group {
+  margin-bottom: 16px;
+}
+
+.mb-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mb-text);
+}
+
+/* 任务列表 */
+.mb-task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mb-task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--mb-bg-secondary);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--mb-border);
+}
+
+.mb-task-info {
+  flex: 1;
+}
+
+.mb-task-name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.mb-task-meta {
+  font-size: 12px;
+  color: var(--mb-text-secondary);
+}
+
+.mb-task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 状态标签 */
+.mb-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mb-status-pending {
+  background: var(--mb-warning);
+  color: #000;
+}
+
+.mb-status-running {
+  background: var(--mb-primary);
+  color: white;
+}
+
+.mb-status-completed {
+  background: var(--mb-success);
+  color: white;
+}
+
+.mb-status-failed {
+  background: var(--mb-error);
+  color: white;
+}
+
+/* 进度条 */
+.mb-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--mb-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.mb-progress-bar {
+  height: 100%;
+  background: var(--mb-primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* 空状态 */
+.mb-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--mb-text-secondary);
+}
+
+.mb-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* Tabs 标签页 */
+.mb-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--mb-border);
+  margin-bottom: 20px;
+}
+
+.mb-tab {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: var(--mb-text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.mb-tab:hover {
+  color: var(--mb-text);
+}
+
+.mb-tab.active {
+  color: var(--mb-primary);
+  border-bottom-color: var(--mb-primary);
+}
