@@ -95,14 +95,6 @@ pnpm build
 
 `service/scheduler.py` 创建一个后台守护线程，轮询数据库获取待执行任务，然后调用 ComfyUI 的内部 API 提交工作流。
 
-## 🎯 学习路径
-
-1. 先阅读 `__init__.py`，了解插件入口
-2. 阅读 `service/database.py`，了解 SQLite 操作
-3. 阅读 `service/api.py`，了解如何注册 API
-4. 阅读 `web/setup.js`，了解前端注入机制
-5. 阅读 `frontend/src/` 下的 React 代码
-
 ## ⚠️ 注意事项
 
 1. 这是一个简化的 Demo，生产环境需要更完善的错误处理
